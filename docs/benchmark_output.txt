@@ -1,0 +1,19 @@
+Single-threaded round-trip (64 KiB ring, 512 MiB per size)
+       chunk         MB/s          ns/op
+           1        109.7           4.56
+           8        885.7           4.52
+          64       6945.7           4.61
+         256      15996.8           8.00
+        1024      20657.6          24.79
+        4096      25315.5          80.90
+       16384      21781.3         376.10
+       65536      17751.8        1845.90
+
+Two-thread SPSC (256-byte writes, 256 MiB)
+        ring         MB/s     p50 ns     p90 ns     p99 ns   p99.9 ns
+        1024       1108.8        132        287        367        616
+        4096       1079.7        147        318        542       1107
+       65536       1212.0        140        313        579       1027
+
+Overrun recovery (drop-oldest on a full ring)
+  59.8 M recoveries/s, 16.7 ns each
